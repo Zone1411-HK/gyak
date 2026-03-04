@@ -41,4 +41,40 @@ router.get('/testsql', async (request, response) => {
     }
 });
 
+router.post('/addKaja', upload.none(), async (req, res) => {
+    try {
+        let { nev, ar, finomsag, datum, mennyiseg } = req.body;
+        await database.addKaja(nev, ar, finomsag == 'true' ? true : false, datum, mennyiseg);
+        res.status(200).json({
+            status: 'success'
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error
+        });
+    }
+});
+
+router.get('/kajak', async (req, res) => {
+    let kajak = await database.selectKaja();
+    res.status(200).json({
+        kajak: kajak
+    });
+});
+
+router.post('/removeKaja/:id', async (req, res) => {
+    try {
+        let id = req.params.id;
+        console.log(id);
+        await database.removeKaja(id);
+        res.status(200).json({
+            status: 'success'
+        });
+    } catch (error) {
+        res.status(500).json({
+            error: error
+        });
+    }
+});
+
 module.exports = router;

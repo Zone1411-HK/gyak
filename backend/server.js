@@ -27,6 +27,9 @@ app.use(
 router.get('/', (request, response) => {
     response.sendFile(path.join(__dirname, '../frontend/html/index.html'));
 });
+router.get('/kajak', (request, response) => {
+    response.sendFile(path.join(__dirname, '../frontend/html/kajak.html'));
+});
 
 //!API endpoints
 app.use('/', router);

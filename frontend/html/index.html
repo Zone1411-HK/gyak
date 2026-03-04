@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hu">
     <head>
         <meta charset="UTF-8" />
@@ -17,7 +17,23 @@
     <body>
         <div class="container-fluid">
             <div class="row text-center">
-                <h1 class="display-1">A szerver fut.</h1>
+                <form id="etelForm" class="d-flex flex-column w-25">
+                    <input type="text" name="nev" placeholder="Név" />
+                    <input type="number" name="ar" />
+                    <div>
+                        <label>
+                            Finom
+                            <input type="radio" name="finomsag" value="true"/>
+                        </label>
+                        <label class="d-flex flex-column">
+                            Nem Finom
+                            <input type="radio" name="finomsag" value="false"/>
+                        </label>
+                    </div>
+                    <input type="date" name="datum">
+                    <input type="number" name="mennyiseg">
+                    <input type="button" value="Hozzáadás" id="newKaja">
+                </form>
             </div>
         </div>
     </body>
