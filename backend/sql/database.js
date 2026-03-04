@@ -29,9 +29,14 @@ async function latestId() {
 
 async function addKaja(nev, ar, finomsag, datum, mennyiseg) {
     try {
-        console.log(await latestId()[id]);
-        let newId = (await latestId()) == undefined ? 1 : (await latestId()) + 1;
-        console.log(newId);
+        let lstId = await latestId();
+        let newId;
+        if (lstId == undefined) {
+            newId = 1;
+        } else {
+            newId = lstId.id + 1;
+        }
+        console.log(lstId);
         const sql = `
     INSERT INTO kaja(id, nev, ar, finomsag, lejarat, mennyiseg)
     VALUES(?,?,?,?,?,?)
